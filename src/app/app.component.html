@@ -21,13 +21,13 @@
     <div class="note">
       Bitte gebt uns schnellstmöglich Bescheid ob ihr kommt!
       <br />
-      <input type="text"
+      <input type="text" *ngIf="hasNotAnswered"
      [value]="name"
       placeholder="Namen eingeben"
       (input)="inputChange($event.target)"
       [ngClass]="{'empty' : isNameFieldEmpty()}"><br />
-      <input type="text" [value]="text" placeholder="Ich bringe mit..." (input)="inputChange2($event.target)" />
-      <div class="buttons">
+      <input type="text" [value]="text" placeholder="Ich bringe mit..." (input)="inputChange2($event.target)"  *ngIf="hasNotAnswered"/>
+      <div class="buttons" *ngIf="hasNotAnswered">
         <button ejs-button cssClass="e-success" (click)="yes()" [disabled]="isNameFieldEmpty()">
           Ja, wir kommen
         </button>
