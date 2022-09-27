@@ -1,0 +1,31 @@
+.container{
+    background-color: grey;
+    opacity: 0.9;
+    text-align: center;
+
+.header{
+    font-size: xx-large;
+    color:#880000;
+}
+    .content{
+        font-size:x-large;
+    }
+    .question{
+        margin-top:15px;
+       
+    }
+    .answer{
+        color:#880000;
+    }
+    .important{
+        text-decoration: underline;        
+    }
+    .note{
+        text-align: center;
+        margin-top:25px;
+        
+    }
+    img{
+        width: 90vw;
+    }
+}
