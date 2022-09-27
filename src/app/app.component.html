@@ -3,27 +3,46 @@
     <h1>Einladung</h1>
   </div>
   <div class="content">
-    Wir möchten euch gerne zu unserer Halloween Party einladen!
-    <div class="question">
-      <div class="important">Wann:</div>
-      <div class="answer">31.10.2022 - 18 Uhr</div>
+    <div class="info" *ngIf="hasNotAnswered">
+      Wir möchten euch gerne zu unserer Halloween Party einladen!
+      <div class="question">
+        <div class="important">Wann:</div>
+        <div class="answer">31.10.2022 - 18 Uhr</div>
+      </div>
+      <div class="question">
+        <div class="important">Wo:</div>
+        <div class="answer">Ganghoferstraße 28, <br />67227 Frankenthal</div>
+      </div>
+      <div class="question">
+        <div class="important">Wie:</div>
+        <div class="answer">Im Kostüm</div>
+      </div>
     </div>
-    <div class="question">
-      <div class="important">Wo:</div>
-      <div class="answer">
-        Ganghoferstraße 28, <br />67227 Frankenthal
+    <div class="note">
+      Bitte gebt uns schnellstmöglich Bescheid ob ihr kommt!
+      <br />
+      <input type="text"
+     [value]="name"
+      placeholder="Namen eingeben"
+      (input)="inputChange($event.target)"
+      [ngClass]="{'empty' : isNameFieldEmpty()}"><br />
+      <input type="text" [value]="text" placeholder="Ich bringe mit..." (input)="inputChange2($event.target)" />
+      <div class="buttons">
+        <button ejs-button cssClass="e-success" (click)="yes()" [disabled]="isNameFieldEmpty()">
+          Ja, wir kommen
+        </button>
+        <button ejs-button cssClass="e-danger" (click)="no()" [disabled]="isNameFieldEmpty()">
+          Nein, ich habe Angst
+        </button>
+      </div>
+      <div *ngIf="!hasNotAnswered">
+        
+        <div class="answer">Wir freuen uns auf euch!
+          <br/> Fried & Alex
+        </div>
+        <img src="https://media0.giphy.com/media/NphAl8qAm0kuc/giphy.gif?cid=790b761184f02c0aaa6fbdcea0157320c269f6661a410bcc&rid=giphy.gif&ct=g"/>
       </div>
       
     </div>
-    <div class="question">
-      <div class="important">Wie:</div>
-      <div class="answer">Im Kostüm</div>
-    </div>
-    <div class="note">
-        Bitte gebt uns schnellstmöglich Bescheid ob ihr kommt!
-        <img src="https://media0.giphy.com/media/NphAl8qAm0kuc/giphy.gif?cid=790b761184f02c0aaa6fbdcea0157320c269f6661a410bcc&rid=giphy.gif&ct=g" />
-    </div>
-
-    
   </div>
 </div>

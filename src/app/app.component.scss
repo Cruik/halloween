@@ -6,6 +6,9 @@
 .header{
     font-size: xx-large;
     color:#880000;
+    h1{
+        margin-bottom: 15px;
+    }
 }
     .content{
         font-size:x-large;
@@ -27,5 +30,17 @@
     }
     img{
         width: 90vw;
+    }
+    
+    .empty{
+        border: 12px solid #880000;
+    }
+    .buttons{
+        margin: 10px;
+
+        button{
+            margin:10px;
+            font-size:larger;
+        }
     }
 }
