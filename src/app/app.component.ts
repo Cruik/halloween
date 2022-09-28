@@ -39,7 +39,7 @@ export class AppComponent {
   }
 
   no() {
-    if (this.name.length > 2) {
+    if (this.name.length >= 2) {
       this.hasNotAnswered = !this.hasNotAnswered;
       this.sendAnswer('Nein');
       this.clickedNo = true;
