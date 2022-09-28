@@ -1,5 +1,5 @@
-import { HttpClient , HttpHeaders, HttpParams } from '@angular/common/http';
-  
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Component } from '@angular/core';
@@ -11,66 +11,58 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'halloween';
-  constructor(
-    private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  userName: string = "jbond";
+  userName: string = 'jbond';
   public name: string = '';
   public text: string = '';
-  public hasNotAnswered:boolean = true;
-  
-  inputChange(args:any){
+  public clickedYes: boolean = false;
+  public clickedNo: boolean = false;
+  public hasNotAnswered: boolean = true;
+
+  inputChange(args: any) {
     this.name = args.value;
   }
 
-  inputChange2(args:any){
+  inputChange2(args: any) {
     this.text = args.value;
   }
 
-  isNameFieldEmpty(){
-
+  isNameFieldEmpty() {
     return this.name.length < 2;
   }
 
   yes() {
     this.hasNotAnswered = !this.hasNotAnswered;
     this.sendAnswer('Ja');
+    this.clickedYes = true;
   }
 
   no() {
-    if(this.name.length > 2){
-      if (confirm('Bist du dir sicher?')) {
-        this.hasNotAnswered = !this.hasNotAnswered;
-        this.sendAnswer('Nein');
-      }
-    }else{
-
-    }  
-    console.log(this.name);  
-    console.log(this.text);  
+    if (this.name.length > 2) {
+      this.hasNotAnswered = !this.hasNotAnswered;
+      this.sendAnswer('Nein');
+      this.clickedNo = true;
+    } else {
+    }
   }
 
-  functionUrl:string = 'https://lobifunction.azurewebsites.net/api/Halloween?code=C7cogwactb2bQipMQUWFadw5SL8HxaUPwm1AB7HXkuoJAzFuHA770Q==';
+  functionUrl: string =
+    'https://lobifunction.azurewebsites.net/api/Halloween?code=C7cogwactb2bQipMQUWFadw5SL8HxaUPwm1AB7HXkuoJAzFuHA770Q==';
 
-  sendAnswer(answer:string){
+  sendAnswer(answer: string) {
     let queryParams = new HttpParams();
-    queryParams = queryParams.append("name",this.name);
-    queryParams = queryParams.append("text" ,this.text);
-    queryParams = queryParams.append("answer", answer);
+    queryParams = queryParams.append('name', this.name);
+    queryParams = queryParams.append('text', this.text);
+    queryParams = queryParams.append('answer', answer);
 
-      this.http.get(this.functionUrl,{params:queryParams})
-        .pipe(
-          tap(_ => this.log('fetched images'))
-        ).subscribe(
-          ele => {
-            console.log("here");
-          }
-        );
-        
+    this.http
+      .get(this.functionUrl, { params: queryParams })
+      .pipe(tap((_) => this.log('fetched images')))
+      .subscribe((ele) => {
+        console.log('here');
+      });
   }
 
-  log(arg0: string): void {
-  
-  }
-  
+  log(arg0: string): void {}
 }

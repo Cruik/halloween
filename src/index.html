@@ -12,5 +12,12 @@
 </head>
 <body>
   <app-root></app-root>
+  <audio controls autoplay="true" id="myaudio">
+    <source src="./assets/horror.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    var audio = document.getElementById("myaudio");
+    audio.volume = 0.15;    
+  </script>
 </body>
 </html>

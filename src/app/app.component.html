@@ -21,28 +21,60 @@
     <div class="note">
       Bitte gebt uns schnellstmöglich Bescheid ob ihr kommt!
       <br />
-      <input type="text" *ngIf="hasNotAnswered"
-     [value]="name"
-      placeholder="Namen eingeben"
-      (input)="inputChange($event.target)"
-      [ngClass]="{'empty' : isNameFieldEmpty()}"><br />
-      <input type="text" [value]="text" placeholder="Ich bringe mit..." (input)="inputChange2($event.target)"  *ngIf="hasNotAnswered"/>
+      <input
+        type="text"
+        *ngIf="hasNotAnswered"
+        [value]="name"
+        placeholder="Namen eingeben"
+        (input)="inputChange($event.target)"
+        [ngClass]="{ empty: isNameFieldEmpty() }"
+      /><br />
+      <input
+        type="text"
+        [value]="text"
+        placeholder="Ich bringe mit..."
+        (input)="inputChange2($event.target)"
+        *ngIf="hasNotAnswered"
+      />
       <div class="buttons" *ngIf="hasNotAnswered">
-        <button ejs-button cssClass="e-success" (click)="yes()" [disabled]="isNameFieldEmpty()">
+        <button
+          ejs-button
+          cssClass="e-success"
+          (click)="yes()"
+          [disabled]="isNameFieldEmpty()"
+        >
           Ja, wir kommen
         </button>
-        <button ejs-button cssClass="e-danger" (click)="no()" [disabled]="isNameFieldEmpty()">
+        <button
+          ejs-button
+          cssClass="e-danger"
+          (click)="no()"
+          [disabled]="isNameFieldEmpty()"
+        >
           Nein, ich habe Angst
         </button>
       </div>
       <div *ngIf="!hasNotAnswered">
-        
-        <div class="answer">Wir freuen uns auf euch!
-          <br/> Fried & Alex
+        <div class="answer" *ngIf="clickedYes">
+          Wir freuen uns auf euch!
+          <br />
+          Fried & Alex
+          <img
+            src="https://c.tenor.com/n_nHdUlInd8AAAAC/frankenstein-friend.gif"
+            alt="Frankenstein Friend GIF - Frankenstein Friend GIFs"
+          />
         </div>
-        <img src="https://media0.giphy.com/media/NphAl8qAm0kuc/giphy.gif?cid=790b761184f02c0aaa6fbdcea0157320c269f6661a410bcc&rid=giphy.gif&ct=g"/>
+        <div class="answer" *ngIf="clickedNo">
+          Schade! Halte dir nächstes Jahr frei!
+          <br />
+          Fried & Alex
+
+          <img
+            src="https://c.tenor.com/yT_3YU8w3hIAAAAC/screaming-mary-wollstonecraft-shelley.gif"
+            alt="Screaming Mary Wollstonecraft Shelley GIF - Screaming Mary Wollstonecraft Shelley The Monsters Mate GIFs"
+          />
+        </div>
       </div>
-      
     </div>
   </div>
 </div>
